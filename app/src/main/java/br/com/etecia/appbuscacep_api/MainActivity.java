@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnBuscarCep;
+    Button btnBuscarCep, Cadastrar,Alterar, Excluir, Limpar;
     EditText txtCep;
     TextView lblCEP, lblLogradouro, lblComplemento, lblBairro, lblCidade, lblEstado;
 
@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         lblEstado = findViewById(R.id.lblEstado);
         btnBuscarCep = findViewById(R.id.btnBuscaCep);
 
+        Cadastrar = findViewById(R.id.idCadastrar);
+        Alterar = findViewById(R.id.idAlterar);
+        Excluir = findViewById(R.id.idExcluir);
+        Limpar = findViewById(R.id.idLimpar);
         btnBuscarCep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
