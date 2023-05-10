@@ -7,6 +7,8 @@
     android:padding="50dp"
     tools:context=".MainActivity">
 
+<!--os botoes tem que apagar todos os textos e por o focus, alem de exibir um alerta dizendo que deu certo-->
+
     <EditText
         android:id="@+id/txtCep"
         android:layout_width="match_parent"
@@ -23,23 +25,28 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+
         <Button
-            android:backgroundTint="@color/azulzinho"
             android:id="@+id/btnBuscaCep"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/azulzinho"
             android:padding="10dp"
             android:text="Buscar CEP"
             android:textSize="20sp" />
 
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/lblCEP"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_background"
+        android:hint="CEP"
         android:padding="5dp"
         android:textColor="#000000"
         android:textSize="20sp" />
@@ -48,22 +55,28 @@
         android:id="@+id/lblLogradouro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/btn_background"
+        android:hint="Rua"
         android:padding="5dp"
         android:textColor="#000000"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/lblComplemento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+
+<!-- por focus no Número-->
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="48dp"
+        android:hint="Número"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/lblBairro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_background"
+        android:hint="Bairro"
         android:padding="5dp"
         android:textColor="#000000"
         android:textSize="20sp" />
@@ -72,6 +85,8 @@
         android:id="@+id/lblCidade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_background"
+        android:hint="Cidade"
         android:padding="5dp"
         android:textColor="#000000"
         android:textSize="20sp" />
@@ -79,59 +94,68 @@
     <Spinner
         android:id="@+id/lblEstado"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_background"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/lblComplemento"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:background="@drawable/btn_background"
+        android:hint="Complemento"
         android:padding="5dp"
         android:textColor="#000000"
         android:textSize="20sp" />
 
     <LinearLayout
-        android:layout_marginTop="150dp"
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/idCadastrar"
-            android:backgroundTint="@color/azulzinho"
-            android:layout_marginRight="10dp"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/azulzinho"
             android:text="Cadastrar" />
 
         <Button
             android:id="@+id/idAlterar"
-            android:backgroundTint="@color/azulzinho"
             android:layout_width="111dp"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/azulzinho"
             android:text="Alterar" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/idExcluir"
-            android:backgroundTint="@color/azulzinho"
-            android:layout_marginRight="10dp"
             android:layout_width="111dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/azulzinho"
             android:text="Excluir" />
 
         <Button
             android:id="@+id/idLimpar"
-            android:backgroundTint="@color/azulzinho"
             android:layout_width="111dp"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/azulzinho"
             android:text="Limpar" />
-</LinearLayout>
-
-
-
+    </LinearLayout>
 
 
 </LinearLayout>

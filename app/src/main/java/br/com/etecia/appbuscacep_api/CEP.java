@@ -73,9 +73,7 @@ public class CEP {
     public String toString() {
         return "CEP: " + getCep()
                 + "\nLogradouro: " + getLogradouro()
-                + "\nComplemento: " + getComplemento()
                 + "\nBairro: " + getBairro()
-                + "\nCidade:" + getLocalidade()
-                + "\nEstado: " + getUf();
+                + "\nCidade:" + getLocalidade();
     }
 }

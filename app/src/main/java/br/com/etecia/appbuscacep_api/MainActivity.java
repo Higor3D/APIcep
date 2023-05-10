@@ -4,17 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnBuscarCep, Cadastrar,Alterar, Excluir, Limpar;
+    Button btnBuscarCep, Cadastrar, Alterar, Excluir, Limpar;
     EditText txtCep;
     TextView lblCEP, lblLogradouro, lblComplemento, lblBairro, lblCidade, lblEstado;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         lblComplemento = findViewById(R.id.lblComplemento);
         lblBairro = findViewById(R.id.lblBairro);
         lblCidade = findViewById(R.id.lblCidade);
-        lblEstado = findViewById(R.id.lblEstado);
+        spinner = findViewById(R.id.lblEstado);
         btnBuscarCep = findViewById(R.id.btnBuscaCep);
 
         Cadastrar = findViewById(R.id.idCadastrar);
@@ -59,5 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        //adapter do array
+        ArrayAdapter adaptador = ArrayAdapter.createFromResource(this, R.array.estado, android.R.layout.simple_spinner_item);
+        //especificar o layout a ser usado
+        adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //aplicar o adaptador no spinner
+        spinner.setAdapter(adaptador);
     }
 }
