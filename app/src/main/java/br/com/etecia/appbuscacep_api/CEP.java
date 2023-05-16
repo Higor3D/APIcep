@@ -12,10 +12,9 @@ public class CEP {
     public CEP() {
     }
 
-    public CEP(String cep, String logradouro, String complemento, String bairro, String localidade, String uf) {
+    public CEP(String cep, String logradouro, String bairro, String localidade, String uf) {
         this.cep = cep;
         this.logradouro = logradouro;
-        this.complemento = complemento;
         this.bairro = bairro;
         this.localidade = localidade;
         this.uf = uf;

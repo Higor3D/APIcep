@@ -9,13 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnBuscarCep, Cadastrar, Alterar, Excluir, Limpar;
-    EditText txtCep;
+    EditText txtCep, edtNumero;
     TextView lblCEP, lblLogradouro, lblComplemento, lblBairro, lblCidade, lblEstado;
     Spinner spinner;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         lblCidade = findViewById(R.id.lblCidade);
         spinner = findViewById(R.id.lblEstado);
         btnBuscarCep = findViewById(R.id.btnBuscaCep);
+        edtNumero = findViewById(R.id.edtNumero);
 
         Cadastrar = findViewById(R.id.idCadastrar);
         Alterar = findViewById(R.id.idAlterar);
@@ -48,10 +50,8 @@ public class MainActivity extends AppCompatActivity {
                     CEP retorno = new HttpService(txtCep.getText().toString().trim()).execute().get();
                     lblCEP.setText(retorno.getCep().toString());
                     lblLogradouro.setText(retorno.getLogradouro().toString());
-                    lblComplemento.setText(retorno.getComplemento().toString());
                     lblBairro.setText(retorno.getBairro().toString());
                     lblCidade.setText(retorno.getLocalidade().toString());
-                    lblEstado.setText(retorno.getUf().toString());
 
 
                 } catch (ExecutionException e) {
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                edtNumero.requestFocus();
 
             }
         });
@@ -68,5 +70,43 @@ public class MainActivity extends AppCompatActivity {
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //aplicar o adaptador no spinner
         spinner.setAdapter(adaptador);
+
+        Excluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Exlcuir", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Cadastrar", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Limpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Limpado Com sucesso!! ", Toast.LENGTH_SHORT).show();
+
+                lblCEP.setText(" ");
+                txtCep.setText(" ");
+                edtNumero.setText(" ");
+                lblLogradouro.setText(" ");
+                lblBairro.setText(" ");
+                lblCidade.setText(" ");
+                lblEstado.setText(" ");
+                lblComplemento.setText(" ");
+                txtCep.requestFocus();
+
+            }
+        });
+        Alterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Alterar", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
