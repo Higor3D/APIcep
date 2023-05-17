@@ -1,7 +1,10 @@
 package br.com.etecia.appbuscacep_api;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toolbar toolbar;
     Button btnBuscarCep, Cadastrar, Alterar, Excluir, Limpar;
     EditText txtCep, edtNumero;
     TextView lblCEP, lblLogradouro, lblComplemento, lblBairro, lblCidade, lblEstado;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         txtCep = findViewById(R.id.txtCep);
         lblCEP = findViewById(R.id.lblCEP);
         lblLogradouro = findViewById(R.id.lblLogradouro);
@@ -34,11 +39,16 @@ public class MainActivity extends AppCompatActivity {
         spinner = findViewById(R.id.lblEstado);
         btnBuscarCep = findViewById(R.id.btnBuscaCep);
         edtNumero = findViewById(R.id.edtNumero);
-
+        toolbar = findViewById(R.id.toolbartop);
         Cadastrar = findViewById(R.id.idCadastrar);
         Alterar = findViewById(R.id.idAlterar);
         Excluir = findViewById(R.id.idExcluir);
         Limpar = findViewById(R.id.idLimpar);
+        txtCep.requestFocus();
+
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("a");
+
         btnBuscarCep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +84,18 @@ public class MainActivity extends AppCompatActivity {
         Excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Exlcuir", Toast.LENGTH_SHORT).show();
+               new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Realmente deseja excluir?")
+                        .setMessage("Não será possível recuperar os dados!!!")
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               Toast.makeText(getApplicationContext(), "Excluido com sucesso!!", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Não", null)
+                        .setIcon(getDrawable(R.drawable.perigo))
+                        .show();
             }
         });
 
@@ -88,24 +109,36 @@ public class MainActivity extends AppCompatActivity {
         Limpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Limpado Com sucesso!! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Apagado com sucesso!! ", Toast.LENGTH_SHORT).show();
 
-                lblCEP.setText(" ");
-                txtCep.setText(" ");
-                edtNumero.setText(" ");
-                lblLogradouro.setText(" ");
-                lblBairro.setText(" ");
-                lblCidade.setText(" ");
-                lblEstado.setText(" ");
-                lblComplemento.setText(" ");
+                lblCEP.setText("");
+                txtCep.setText("");
+                edtNumero.setText("");
+                lblLogradouro.setText("");
+                lblBairro.setText("");
+                lblCidade.setText("");
+//                lblEstado.setSelected();
+                lblComplemento.setText("");
                 txtCep.requestFocus();
+
 
             }
         });
         Alterar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Alterar", Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Realmente deseja alterar?")
+                        .setMessage("Não será possível recuperar os dados!!!")
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "Alterado com sucesso!!", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Não", null)
+                        .setIcon(getDrawable(R.drawable.perigoamarelo))
+                        .show();
             }
         });
     }
